@@ -38,8 +38,14 @@ const Liff = ({ liffID }: ILiffProps) => {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
 
-            if (pageValue) {
-              router.push(pageValue)
+            const destinationUrl = window?.location?.search
+
+            const pattern = /\?page=(\w+)/
+            const match = destinationUrl?.match(pattern)
+
+            if (match) {
+              const extractedValue = match[1]
+              router.push(extractedValue)
             }
           })
         } else {
