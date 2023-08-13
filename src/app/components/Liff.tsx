@@ -38,8 +38,20 @@ const Liff = ({ liffID }: ILiffProps) => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
-            console.log("profile", profile)
-            console.log("pageValue", pageValue)
+            liff
+              .sendMessages([
+                {
+                  type: "text",
+                  text: `สวัสดีค่ะ คุณ ${profile.displayName}`,
+                },
+              ])
+              .then(() => {
+                console.log("message sent")
+              })
+              .catch((err: any) => {
+                console.log("error", err)
+              })
+
             if (pageValue === "contact") {
               router.push("contact")
             }
