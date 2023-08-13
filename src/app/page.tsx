@@ -1,10 +1,25 @@
+"use client"
 import Image from "next/image"
 import { Mitr } from "next/font/google"
 import clsx from "clsx"
 import Slide from "./components/Slide"
 const inter = Mitr({ subsets: ["latin"], weight: "400" })
+import { useSearchParams, useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function Home() {
+  const searchParams = useSearchParams()
+  const search = searchParams.get("page")
+  const router = useRouter()
+
+  useEffect(() => {
+    if (search === "map") {
+      router.push("map")
+    }
+    if (search === "menu") {
+      router.push("menu")
+    }
+  }, [router, search])
   return (
     <div className="min-h-screen flex flex-col justify-center">
       <div className="lg:w-[70vw] w-[90vw] mx-auto  lg:mt-[100px] mt-[0px]">

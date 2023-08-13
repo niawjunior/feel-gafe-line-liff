@@ -30,19 +30,13 @@ const Liff = ({ liffID }: ILiffProps) => {
 
     // Get the value of the "page" parameter within liff.state
     const pageValue = nestedParams.get("page")
-
+    console.log("pageValue", pageValue)
     console.log("start liff.init()...")
     liff
       .init({ liffId: liffID || "" })
       .then(() => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
-          if (pageValue === "map") {
-            router.push("map")
-          }
-          if (pageValue === "menu") {
-            router.push("menu")
-          }
           liff.getProfile().then((profile: any) => {
             console.log(profile)
             router.push("/")
