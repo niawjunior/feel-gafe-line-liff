@@ -1,7 +1,9 @@
 "use client"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/router"
+
 import liff from "@line/liff"
+import { useSearchParams } from "next/navigation"
 
 interface ILiffProps {
   liffID: string
@@ -11,8 +13,10 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [profile, setProfile] = useState<any>(null)
   const [liffError, setLiffError] = useState<any>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const queryString = window.location.search
+  const page = searchParams.get("page")
 
   // Parse the query string into an object
   const queryParams = new URLSearchParams(queryString)
@@ -23,6 +27,19 @@ const Liff = ({ liffID }: ILiffProps) => {
   // Parse the nested query parameters in liff.state
   const nestedParams = new URLSearchParams(liffStateValue!)
   const pageValue = nestedParams.get("page")
+
+  useEffect(() => {
+    router.beforePopState(({ url, as, options }) => {
+      // I only want to allow these two routes!
+      if (as !== "/" && as !== "/other") {
+        // Have SSR render bad routes as a 404.
+        window.location.href = as
+        return false
+      }
+
+      return true
+    })
+  }, [router])
 
   useEffect(() => {
     // Get the value of the "page" parameter within liff.state
@@ -40,7 +57,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
-            router.push("contact")
+            // router.push("contact")
           })
         } else {
           handleLogin()
@@ -66,7 +83,7 @@ const Liff = ({ liffID }: ILiffProps) => {
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
           <div>{pageValue}</div>
-          <div>{window.location.href}</div>
+          <div>{page}</div>
         </div>
       )}
     </div>
