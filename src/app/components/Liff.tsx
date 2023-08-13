@@ -14,19 +14,6 @@ const Liff = ({ liffID }: ILiffProps) => {
   const router = useRouter()
 
   useEffect(() => {
-    const queryString = window.location.search
-
-    // Parse the query string into an object
-    const queryParams = new URLSearchParams(queryString)
-
-    // Get the value of the "liff.state" parameter
-    const liffStateValue = queryParams.get("liff.state")
-
-    // Parse the nested query parameters in liff.state
-    const nestedParams = new URLSearchParams(liffStateValue!)
-    const pageValue = nestedParams.get("page")
-    setPageValue(pageValue)
-
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
       const destinationUrl = window?.location?.search
@@ -36,6 +23,7 @@ const Liff = ({ liffID }: ILiffProps) => {
 
       if (match) {
         const extractedValue = match[1]
+        setPageValue(extractedValue)
         liff.login({
           redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
         })
@@ -49,7 +37,10 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
-            // router.push("contact")
+
+            if (pageValue) {
+              router.push(pageValue)
+            }
           })
         } else {
           handleLogin()
@@ -60,7 +51,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         console.log(`LIFF error: ${e.message}`)
         setLiffError(e.message.toString())
       })
-  }, [liffID, liffObject, router])
+  }, [liffID, liffObject, pageValue, router])
 
   return (
     <div className="flex justify-center items-center flex-col">
@@ -75,8 +66,6 @@ const Liff = ({ liffID }: ILiffProps) => {
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
           <div>Page {pageValue}</div>
-          <div>Page {window?.location?.href}</div>
-          <div>Page {window?.location?.search}</div>
         </div>
       )}
     </div>
