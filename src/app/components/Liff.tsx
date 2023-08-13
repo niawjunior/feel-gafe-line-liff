@@ -29,19 +29,6 @@ const Liff = ({ liffID }: ILiffProps) => {
   const pageValue = nestedParams.get("page")
 
   useEffect(() => {
-    router.beforePopState(({ url, as, options }) => {
-      // I only want to allow these two routes!
-      if (as !== "/" && as !== "/other") {
-        // Have SSR render bad routes as a 404.
-        window.location.href = as
-        return false
-      }
-
-      return true
-    })
-  }, [router])
-
-  useEffect(() => {
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
       const destinationUrl = window.location.href
