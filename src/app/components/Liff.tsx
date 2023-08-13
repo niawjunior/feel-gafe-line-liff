@@ -38,8 +38,15 @@ const Liff = ({ liffID }: ILiffProps) => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
-            console.log(profile)
-            router.push("/")
+            console.log("profile", profile)
+            console.log("pageValue", pageValue)
+            if (pageValue === "contact") {
+              router.push("contact")
+            }
+            if (pageValue === "menu") {
+              router.push("menu")
+            }
+            // router.push("/")
           })
         } else {
           handleLogin()
