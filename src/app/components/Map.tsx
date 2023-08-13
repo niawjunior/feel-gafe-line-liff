@@ -1,24 +1,40 @@
 "use client"
 import { BiLogoFacebook, BiPhoneCall } from "react-icons/bi"
+import Image from "next/image"
 const Map = () => {
   const handleClickFacebook = () => {
     window.open("https://web.facebook.com/profile.php?id=100094097204204")
   }
+  const handleClickLine = () => {
+    window.open("https://lin.ee/xi9bIR2")
+  }
   return (
-    <div className="shadow-md bg-white p-2 ">
+    <div className="shadow-md bg-white/70 p-4 rounded-md ">
       <div className="font-bold text-coffee mb-2">
         FEEL Gafé - ฟีล กาเฟ่ พระราม 2
       </div>
       <div className="flex gap-2">
-        <div
-          onClick={handleClickFacebook}
-          className="bg-blue-200 w-8 h-8 flex justify-center items-center rounded-full mb-2 hover:cursor-pointer"
-        >
-          <BiLogoFacebook />
+        <div className="bg-blue-200 w-8 h-8 flex justify-center items-center rounded-full mb-2 hover:cursor-pointer">
+          <a
+            href="https://web.facebook.com/profile.php?id=100094097204204"
+            target="_blank"
+          >
+            <BiLogoFacebook />
+          </a>
         </div>
         <div className="bg-green-200 w-8 h-8 flex justify-center items-center rounded-full mb-2 hover:cursor-pointer">
           <a href="tel:090-926-4747">
             <BiPhoneCall />
+          </a>
+        </div>
+        <div className="bg-green-400 w-8 h-8 flex justify-center items-center rounded-full mb-2 hover:cursor-pointer">
+          <a href="https://lin.ee/xi9bIR2" target="_blank">
+            <Image
+              src={"/line-icon.png"}
+              alt="line-icon"
+              height={"20"}
+              width={"20"}
+            />
           </a>
         </div>
       </div>
