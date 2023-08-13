@@ -8,6 +8,7 @@ interface ILiffProps {
 }
 const Liff = ({ liffID }: ILiffProps) => {
   const [liffObject, setLiffObject] = useState<any>(null)
+  const [profile, setProfile] = useState<any>(null)
   const [liffError, setLiffError] = useState<any>(null)
   const router = useRouter()
 
@@ -38,6 +39,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
+            setProfile(profile)
             liff
               .sendMessages([
                 {
@@ -81,7 +83,7 @@ const Liff = ({ liffID }: ILiffProps) => {
       {liffObject?.isLoggedIn() && (
         <div className="mt-[100px]">
           <div className="font-semibold text-coffee">
-            สวัสดีค่ะ คุณ {liffObject?.displayName || "N/A"}
+            สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
         </div>
       )}
