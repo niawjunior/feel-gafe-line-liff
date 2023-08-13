@@ -9,6 +9,10 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [liffObject, setLiffObject] = useState(null)
   const [liffError, setLiffError] = useState(null)
 
+  const handleLogin = () => {
+    liff.login()
+  }
+
   useEffect(() => {
     console.log("start liff.init()...")
     liff
@@ -19,9 +23,11 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           console.log(liff.getProfile())
           // The user can use an API that requires an access token, such as liff.getProfile().
+        } else {
+          handleLogin()
         }
         // console.log(liff.getVersion())
-        console.log(liff)
+        console.log(liff.getProfile())
         console.log("liff.init() done")
       })
       .catch((e: any) => {
@@ -30,7 +36,13 @@ const Liff = ({ liffID }: ILiffProps) => {
       })
   }, [liffID])
 
-  return <div>hello</div>
+  return (
+    <div>
+      <div>
+        <p>User is not logged in.</p>
+      </div>
+    </div>
+  )
 }
 
 export default Liff
