@@ -1,5 +1,11 @@
+import Liff from "../components/Liff"
+
 const Page = () => {
-  return <div>hello</div>
+  return (
+    <div className="min-h-screen">
+      <Liff liffID={process.env.LIFF_ID!} />
+    </div>
+  )
 }
 
 export default Page

@@ -1,5 +1,3 @@
-import Liff from "./components/Liff"
-import Navbar from "./components/Navbar"
 import Image from "next/image"
 import { Mitr } from "next/font/google"
 import clsx from "clsx"
@@ -56,9 +54,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <div>
-        <Liff liffID={process.env.LIFF_ID!} />
-      </div> */}
     </div>
   )
 }
