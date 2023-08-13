@@ -42,7 +42,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
-            router.push("contact")
+            // router.push("contact")
           })
         } else {
           handleLogin()
@@ -67,7 +67,7 @@ const Liff = ({ liffID }: ILiffProps) => {
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
-          <div>{pageValue}</div>
+          <div>Page {pageValue}</div>
         </div>
       )}
     </div>
