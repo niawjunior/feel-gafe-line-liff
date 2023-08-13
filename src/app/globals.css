@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.carousel-status {
+  font-size: 14px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  text-shadow: unset !important;
+  color: white !important;
+  border-radius: 20px !important;
+  background: rgb(159, 212, 255) !important;
+}

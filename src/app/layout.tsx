@@ -1,6 +1,9 @@
 import "./globals.css"
 import type { Metadata } from "next"
 import { Kanit } from "next/font/google"
+import Navbar from "./components/Navbar"
+import clsx from "clsx"
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 
 const inter = Kanit({ subsets: ["latin"], weight: "400" })
 
@@ -16,7 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body
+        suppressHydrationWarning={true}
+        className={clsx(
+          inter.className,
+          `bg-feelgafe bg-cover bg-center bg-no-repeat relative`
+        )}
+      >
+        <div className=" absolute z-10 w-full lg:top-10 top-2">
+          <Navbar />
+        </div>
         {children}
       </body>
     </html>

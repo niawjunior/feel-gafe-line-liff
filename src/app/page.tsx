@@ -3,16 +3,13 @@ import Navbar from "./components/Navbar"
 import Image from "next/image"
 import { Mitr } from "next/font/google"
 import clsx from "clsx"
+import Slide from "./components/Slide"
 const inter = Mitr({ subsets: ["latin"], weight: "400" })
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-feelgafe bg-cover bg-center bg-no-repeat flex flex-col justify-center">
-      <div className=" absolute z-10 w-full lg:top-10 top-2">
-        <Navbar />
-      </div>
-
-      <div className="lg:w-[60] w-[80vw] mx-auto mt-[100px]">
+    <div className="min-h-screen flex flex-col justify-center">
+      <div className="lg:w-[70vw] w-[90vw] mx-auto mt-[100px]">
         <div
           className={clsx(
             inter.className,
@@ -27,9 +24,11 @@ export default function Home() {
             <div className="lg:text-5xl text-4xl text-coffee font-bold ">
               ฟีล <span className="text-neutral-800">กาเฟ</span>
             </div>
-            {/* <div className="text-2xl text-red-400 mt-8 font-bold ">
-              พระราม 2
-            </div> */}
+            <div className="">
+              <div className="text-xl underline underline-offset-4   mt-8 font-bold ">
+                พระราม 2
+              </div>
+            </div>
             <div className="flex justify-center mt-10">
               <Image
                 src={"/logo.jpeg"}
@@ -51,12 +50,9 @@ export default function Home() {
                 เมนูแนะนำ
               </div>
             </div>
-            <Image
-              src={"/coffee-menu-1.png"}
-              alt="coffee"
-              height={"400"}
-              width={"200"}
-            />
+            <div className="lg:w-[20vw] w-[70vw]">
+              <Slide />
+            </div>
           </div>
         </div>
       </div>
