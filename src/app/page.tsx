@@ -13,8 +13,9 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
+    console.log("search", search)
     if (search === "contact") {
-      router.push("map")
+      router.push("contact")
     }
     if (search === "menu") {
       router.push("menu")
