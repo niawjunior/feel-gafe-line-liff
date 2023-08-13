@@ -10,7 +10,7 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [liffError, setLiffError] = useState<any>(null)
 
   const handleLogin = () => {
-    liff.login()
+    // liff.login()
   }
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const Liff = ({ liffID }: ILiffProps) => {
           liff.getProfile().then((profile: any) => {
             console.log(profile)
           })
-          // The user can use an API that requires an access token, such as liff.getProfile().
         } else {
           handleLogin()
         }
@@ -36,11 +35,17 @@ const Liff = ({ liffID }: ILiffProps) => {
   }, [liffID, liffObject])
 
   return (
-    <div>
-      <div>
-        {liffObject?.isLoggedIn() && <div>Hello</div>}
-        {!liffObject?.isLoggedIn() && <p>User is not logged in.</p>}
-      </div>
+    <div className="flex justify-center items-center">
+      {liffObject?.isLoggedIn() && (
+        <div className="font-semibold text-coffee">
+          สวัสดีค่ะ คุณ {liffObject?.displayName}
+        </div>
+      )}
+      {!liffObject?.isLoggedIn() && (
+        <div className="font-bold text-2xl text-coffee hover:text-coffee-hover">
+          เรากำลังพาคุณไปยังหน้า Login...
+        </div>
+      )}
     </div>
   )
 }
