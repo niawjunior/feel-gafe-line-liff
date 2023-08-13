@@ -29,7 +29,7 @@ const Liff = ({ liffID }: ILiffProps) => {
 
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
-      const destinationUrl = pageValue
+      const destinationUrl = window?.location?.search
 
       const pattern = /\?page=(\w+)/
       const match = destinationUrl?.match(pattern)
