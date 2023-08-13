@@ -36,7 +36,7 @@ export default function Home() {
             </div>
 
             <div className="lg:text-5xl text-4xl mt-4 text-coffee font-bold ">
-              ฟีล <span className="text-neutral-800">กาเฟ</span>
+              ฟีล <span className="text-neutral-800">กาเฟ่</span>
             </div>
             <div className="">
               <div className="text-xl underline underline-offset-4   mt-4 font-bold ">
