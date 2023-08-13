@@ -74,9 +74,7 @@ const Liff = ({ liffID }: ILiffProps) => {
           </div>
           <div>
             <Image
-              src={
-                "https://profile.line-scdn.net/0huvEeTMRQKlloHD9N3qZUJhhMKTNLbXNLRHxnbVhOc2EFez0KQChgbFlMJGhVfz5YFi9lbVsYI2FkD10_dkrWbW8sdG5RK2kOTXhluA"
-              }
+              src={profile?.pictureUrl}
               alt="profile"
               height={100}
               width={100}
