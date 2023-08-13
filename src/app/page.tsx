@@ -9,27 +9,27 @@ const inter = Mitr({ subsets: ["latin"], weight: "400" })
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center">
-      <div className="lg:w-[70vw] w-[90vw] mx-auto mt-[100px]">
+      <div className="lg:w-[70vw] w-[90vw] mx-auto  lg:mt-[100px] mt-[0px]">
         <div
           className={clsx(
             inter.className,
-            `h-full lg:flex lg:flex-row flex-col justify-around  text-center bg-white/50 shadow-xl rounded-md px-4 py-8 `
+            `h-full lg:flex lg:flex-row flex-col justify-around  text-center bg-white/50 shadow-xl rounded-md px-4 lg:py-8 py-6 `
           )}
         >
           <div className="relative">
             <div className="lg:text-5xl text-4xl  text-coffee font-bold ">
               FEEL <span className="text-neutral-800">Gafé</span>
             </div>
-            <div className="lg:text-5xl text-4xl text-white font-bold ">-</div>
-            <div className="lg:text-5xl text-4xl text-coffee font-bold ">
+
+            <div className="lg:text-5xl text-4xl mt-4 text-coffee font-bold ">
               ฟีล <span className="text-neutral-800">กาเฟ</span>
             </div>
             <div className="">
-              <div className="text-xl underline underline-offset-4   mt-8 font-bold ">
+              <div className="text-xl underline underline-offset-4   mt-4 font-bold ">
                 พระราม 2
               </div>
             </div>
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center mt-4 w-[60px] h-[60px] mx-auto">
               <Image
                 src={"/logo.jpeg"}
                 alt="logo"
@@ -39,7 +39,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className=" lg:mt-0 mt-[50px] flex flex-col items-center justify-center">
+          <div className=" lg:mt-0 mt-[20px] flex flex-col items-center justify-center">
             <div className="flex text-center">
               <div
                 className={clsx(
