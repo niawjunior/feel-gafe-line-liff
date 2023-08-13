@@ -14,19 +14,10 @@ const Liff = ({ liffID }: ILiffProps) => {
   const router = useRouter()
 
   const handleLogin = () => {
-    const destinationUrl = window?.location?.search
-
-    const pattern = /\?page=(\w+)/
-    const match = destinationUrl?.match(pattern)
-
-    if (match) {
-      const extractedValue = match[1]
-      setPageValue(extractedValue)
-      liff.login({
-        redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
-      })
-      // liff.login()
-    }
+    // liff.login({
+    //   redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
+    // })
+    liff.login()
   }
   useEffect(() => {
     // Get the value of the "page" parameter within liff.state
@@ -37,15 +28,14 @@ const Liff = ({ liffID }: ILiffProps) => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
-            setProfile(profile)
-
             const destinationUrl = window?.location?.search
-
             const pattern = /\?page=(\w+)/
             const match = destinationUrl?.match(pattern)
+            setProfile(profile)
 
             if (match) {
               const extractedValue = match[1]
+              setPageValue(extractedValue)
               router.push(extractedValue)
             }
           })
@@ -67,7 +57,7 @@ const Liff = ({ liffID }: ILiffProps) => {
           เรากำลังพาคุณไปยังหน้า Login...
         </div>
       )}
-      {liffObject?.isLoggedIn() && (
+      {liffObject?.isLoggedIn() && pageValue === "line" && (
         <div className="mt-[100px]">
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
