@@ -13,7 +13,7 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    if (search === "map") {
+    if (search === "contact") {
       router.push("map")
     }
     if (search === "menu") {
