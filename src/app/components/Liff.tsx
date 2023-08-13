@@ -28,19 +28,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
-            liff
-              .sendMessages([
-                {
-                  type: "text",
-                  text: `สวัสดีค่ะ คุณ ${profile.displayName}`,
-                },
-              ])
-              .then(() => {
-                console.log("message sent")
-              })
-              .catch((err: any) => {
-                console.log("error", err)
-              })
+            router.push("contact")
           })
         } else {
           handleLogin()
