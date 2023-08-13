@@ -71,7 +71,6 @@ const Liff = ({ liffID }: ILiffProps) => {
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
-          <div>Page {pageValue}</div>
         </div>
       )}
     </div>
