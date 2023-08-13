@@ -1,9 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
-
+import { useRouter } from "next/navigation"
 import liff from "@line/liff"
-import { useSearchParams } from "next/navigation"
 
 interface ILiffProps {
   liffID: string
@@ -12,23 +10,23 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [liffObject, setLiffObject] = useState<any>(null)
   const [profile, setProfile] = useState<any>(null)
   const [liffError, setLiffError] = useState<any>(null)
+  const [pageValue, setPageValue] = useState<any>(null)
   const router = useRouter()
-  const searchParams = useSearchParams()
-
-  const queryString = window.location.search
-  const page = searchParams.get("page")
-
-  // Parse the query string into an object
-  const queryParams = new URLSearchParams(queryString)
-
-  // Get the value of the "liff.state" parameter
-  const liffStateValue = queryParams.get("liff.state")
-
-  // Parse the nested query parameters in liff.state
-  const nestedParams = new URLSearchParams(liffStateValue!)
-  const pageValue = nestedParams.get("page")
 
   useEffect(() => {
+    const queryString = window.location.search
+
+    // Parse the query string into an object
+    const queryParams = new URLSearchParams(queryString)
+
+    // Get the value of the "liff.state" parameter
+    const liffStateValue = queryParams.get("liff.state")
+
+    // Parse the nested query parameters in liff.state
+    const nestedParams = new URLSearchParams(liffStateValue!)
+    const pageValue = nestedParams.get("page")
+    setPageValue(pageValue)
+
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
       const destinationUrl = window.location.href
@@ -44,7 +42,7 @@ const Liff = ({ liffID }: ILiffProps) => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile: any) => {
             setProfile(profile)
-            // router.push("contact")
+            router.push("contact")
           })
         } else {
           handleLogin()
@@ -70,7 +68,6 @@ const Liff = ({ liffID }: ILiffProps) => {
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
           <div>{pageValue}</div>
-          <div>{page}</div>
         </div>
       )}
     </div>
