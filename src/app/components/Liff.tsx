@@ -12,6 +12,18 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [liffError, setLiffError] = useState<any>(null)
   const router = useRouter()
 
+  const queryString = window.location.search
+
+  // Parse the query string into an object
+  const queryParams = new URLSearchParams(queryString)
+
+  // Get the value of the "liff.state" parameter
+  const liffStateValue = queryParams.get("liff.state")
+
+  // Parse the nested query parameters in liff.state
+  const nestedParams = new URLSearchParams(liffStateValue!)
+  const pageValue = nestedParams.get("page")
+
   useEffect(() => {
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
@@ -53,6 +65,8 @@ const Liff = ({ liffID }: ILiffProps) => {
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
+          <div>{pageValue}</div>
+          <div>{window.location.href}</div>
         </div>
       )}
     </div>
