@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import liff from "@line/liff"
-
+import Image from "next/image"
 interface ILiffProps {
   liffID: string
 }
@@ -13,22 +13,23 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [pageValue, setPageValue] = useState<any>(null)
   const router = useRouter()
 
+  const handleLogin = () => {
+    const destinationUrl = window?.location?.search
+
+    const pattern = /\?page=(\w+)/
+    const match = destinationUrl?.match(pattern)
+
+    if (match) {
+      const extractedValue = match[1]
+      setPageValue(extractedValue)
+      liff.login({
+        redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
+      })
+      // liff.login()
+    }
+  }
   useEffect(() => {
     // Get the value of the "page" parameter within liff.state
-    const handleLogin = () => {
-      const destinationUrl = window?.location?.search
-
-      const pattern = /\?page=(\w+)/
-      const match = destinationUrl?.match(pattern)
-
-      if (match) {
-        const extractedValue = match[1]
-        setPageValue(extractedValue)
-        liff.login({
-          redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
-        })
-      }
-    }
     console.log("start liff.init()...")
     liff
       .init({ liffId: liffID || "" })
@@ -70,6 +71,17 @@ const Liff = ({ liffID }: ILiffProps) => {
         <div className="mt-[100px]">
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
+          </div>
+          <div>
+            <Image
+              src={
+                "https://profile.line-scdn.net/0huvEeTMRQKlloHD9N3qZUJhhMKTNLbXNLRHxnbVhOc2EFez0KQChgbFlMJGhVfz5YFi9lbVsYI2FkD10_dkrWbW8sdG5RK2kOTXhluA"
+              }
+              alt="profile"
+              height={100}
+              width={100}
+              className="rounded-full mt-4"
+            />
           </div>
         </div>
       )}
