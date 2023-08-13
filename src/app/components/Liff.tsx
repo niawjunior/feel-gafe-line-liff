@@ -68,6 +68,8 @@ const Liff = ({ liffID }: ILiffProps) => {
             สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
           </div>
           <div>Page {pageValue}</div>
+          <div>Page {window?.location?.href}</div>
+          <div>Page {window?.location?.search}</div>
         </div>
       )}
     </div>
