@@ -29,10 +29,17 @@ const Liff = ({ liffID }: ILiffProps) => {
 
     // Get the value of the "page" parameter within liff.state
     const handleLogin = () => {
-      const destinationUrl = window.location.href
-      liff.login({
-        redirectUri: destinationUrl,
-      })
+      const destinationUrl = pageValue
+
+      const pattern = /\?page=(\w+)/
+      const match = destinationUrl?.match(pattern)
+
+      if (match) {
+        const extractedValue = match[1]
+        liff.login({
+          redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
+        })
+      }
     }
     console.log("start liff.init()...")
     liff
