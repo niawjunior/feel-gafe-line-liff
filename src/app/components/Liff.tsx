@@ -15,6 +15,7 @@ const Liff = ({ liffID }: ILiffProps) => {
       .init({ liffId: liffID || "" })
       .then(() => {
         setLiffObject(liff)
+        console.log("liff.isLoggedIn()", liff.isLoggedIn())
         if (liff.isLoggedIn()) {
           console.log(liff.getProfile())
           // The user can use an API that requires an access token, such as liff.getProfile().
