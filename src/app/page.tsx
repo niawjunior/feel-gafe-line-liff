@@ -13,7 +13,7 @@ export default function Home() {
         <div
           className={clsx(
             inter.className,
-            `h-full lg:flex lg:flex-row flex-col justify-around  text-center bg-white/50 shadow-xl rounded-md px-4 lg:py-8 py-6 `
+            `h-full lg:flex lg:flex-row flex-col justify-around  text-center bg-white/50 shadow-xl rounded-md px-4 lg:py-8 py-6 lg:mt-[20px] mt-[100px] `
           )}
         >
           <div className="relative">
