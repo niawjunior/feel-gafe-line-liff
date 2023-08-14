@@ -11,7 +11,7 @@ const Slide = () => {
       infiniteLoop={true}
       showIndicators={false}
       showArrows={false}
-      className="h-[300px]"
+      className="h-full"
     >
       <div>
         <Image

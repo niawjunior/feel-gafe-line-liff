@@ -23,7 +23,7 @@ export default function Home() {
   }, [router, search])
   return (
     <div className="min-h-screen flex flex-col justify-center">
-      <div className="lg:w-[70vw] w-[90vw] mx-auto  lg:mt-[100px] mt-[0px]">
+      <div className="lg:w-[70vw] w-[90vw] min-h-[50vh] mx-auto  lg:mt-[100px] mt-[0px]">
         <div
           className={clsx(
             inter.className,
