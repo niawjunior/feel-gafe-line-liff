@@ -68,7 +68,7 @@ const Liff = ({ liffID }: ILiffProps) => {
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {userProfile?.displayName || "N/A"}
           </div>
-          <div className="mt-4  mb-4 shadow-xl rounded-full w-[100px] h-[100px] flex justify-center items-center">
+          <div className="mt-4  mb-4 rounded-full w-[100px] h-[100px] flex justify-center items-center">
             <Image
               src={userProfile?.pictureUrl || "/cat.png"}
               alt="profile"
