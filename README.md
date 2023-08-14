@@ -1,3 +1,12 @@
+# FEEL Gafé ฟีล กาเฟ่
+
+![alt text](/docs-demo/demo-1.PNG)
+![alt text](/docs-demo/demo-2.PNG)
+![alt text](/docs-demo/demo-3.PNG)
+![alt text](/docs-demo/demo-4.PNG)
+![alt text](/docs-demo/demo-5.PNG)
+![alt text](/docs-demo/demo-6.PNG)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -1,32 +1,13 @@
 "use client"
 import Image from "next/image"
+import { useAppSelector } from "../redux/hooks"
 const Menu = () => {
-  const coffees = [
-    {
-      name: "Orangeno",
-      price: 70,
-      image: "/coffee-menu-2.png",
-    },
-    {
-      name: "Matcha Espresso",
-      price: 70,
-      image: "/coffee-menu-1.png",
-    },
-    {
-      name: "ชานมบราวน์ชูการ์ วิปชีสพ่นไฟ",
-      price: 60,
-      image: "/coffee-menu-4.png",
-    },
-    {
-      name: "OREO FRAPPE",
-      price: 60,
-      image: "/coffee-menu-5.png",
-    },
-  ]
+  const coffees = useAppSelector((state) => state.menuReducer)
+
   return (
     <div className="pt-[100px] lg:px-20 px-2 min-h-screen ">
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 place-content-evenly">
-        {coffees.map((item, index) => {
+        {coffees?.menus?.map((item, index) => {
           return (
             <div
               key={index}

@@ -8,7 +8,8 @@ import {
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 
 import lineReducer from "./features/lineSlice"
-import loginSlice from "./features/loginSlice"
+import loginReducer from "./features/loginSlice"
+import menuReducer from "./features/menuSlice"
 
 export const rtkQueryErrorLogger: Middleware =
   (api: MiddlewareAPI) => (next) => (action) => {
@@ -22,7 +23,8 @@ const middlewareEnhancer = applyMiddleware(rtkQueryErrorLogger)
 export const store = configureStore({
   reducer: {
     lineReducer,
-    loginSlice,
+    loginReducer,
+    menuReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat(),

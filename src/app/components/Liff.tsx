@@ -17,14 +17,13 @@ const Liff = ({ liffID }: ILiffProps) => {
   const [pageValue, setPageValue] = useState<any>(null)
   const router = useRouter()
   const userProfile = useAppSelector((state) => state.lineReducer)
-  const userLogin = useAppSelector((state) => state.loginSlice)
+  const userLogin = useAppSelector((state) => state.loginReducer)
 
   const dispatch = useAppDispatch()
   const handleLogin = () => {
-    // liff.login()
+    liff.login()
   }
   useEffect(() => {
-    // Get the value of the "page" parameter within liff.state
     console.log("start liff.init()...")
     liff
       .init({ liffId: liffID || "" })
