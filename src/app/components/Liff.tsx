@@ -10,6 +10,7 @@ import { setLogin } from "../redux/features/loginSlice"
 interface ILiffProps {
   liffID: string
 }
+
 const Liff = ({ liffID }: ILiffProps) => {
   const [liffObject, setLiffObject] = useState<any>(null)
   const [liffError, setLiffError] = useState<any>(null)
@@ -63,19 +64,29 @@ const Liff = ({ liffID }: ILiffProps) => {
         </div>
       )}
       {userLogin?.isLoggedIn && pageValue === "line" && (
-        <div className="mt-[100px]">
+        <div className="mt-[100px] flex flex-col justify-center items-center">
           <div className="font-semibold text-coffee">
             สวัสดีค่ะ คุณ {userProfile?.displayName || "N/A"}
           </div>
-          <div>
+          <div className="mt-4  mb-4 shadow-xl rounded-full w-[100px] h-[100px] flex justify-center items-center">
             <Image
-              src={userProfile?.pictureUrl!}
+              src={userProfile?.pictureUrl || "/cat.png"}
               alt="profile"
-              height={100}
-              width={100}
+              height={80}
+              width={80}
               className="rounded-full mt-4"
             />
           </div>
+          {/* <div className="font-bold mb-2 text-coffee">QR สำหรับบัตรสะสมแต้ม</div>
+        <div className="bg-[#988686] h-[200px] w-[300px] rounded-sm">
+          <Image
+            src={"/qr.png"}
+            alt="qr"
+            height={80}
+            width={80}
+            className="rounded-full mt-4"
+          />
+        </div> */}
         </div>
       )}
     </div>
