@@ -59,7 +59,7 @@ const Liff = ({ liffID }: ILiffProps) => {
     <div className="flex justify-center items-center flex-col">
       {!userLogin?.isLoggedIn && (
         <div className="font-bold text-2xl text-coffee hover:text-coffee-hover mt-[100px]">
-          เรากำลังพาคุณไปยังหน้า Login...
+          เรากำลังพาคุณไปยังหน้าเว็บไซต์...
         </div>
       )}
       {userLogin?.isLoggedIn && pageValue === "line" && (
