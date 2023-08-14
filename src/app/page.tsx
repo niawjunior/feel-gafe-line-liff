@@ -52,6 +52,14 @@ export default function Home() {
                 className="rounded-full shadow-xl border-4 border-white"
               />
             </div>
+            <div className="flex justify-center mt-4 w-[100px] h-[100px] mx-auto">
+              <Image
+                src="/coffee-qr.png"
+                alt="qr"
+                height={200}
+                width={200}
+              ></Image>
+            </div>
           </div>
           <div className=" lg:mt-0 mt-[20px] flex flex-col items-center justify-center">
             <div className="flex text-center">

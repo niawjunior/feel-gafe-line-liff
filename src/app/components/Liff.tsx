@@ -21,7 +21,7 @@ const Liff = ({ liffID }: ILiffProps) => {
 
   const dispatch = useAppDispatch()
   const handleLogin = () => {
-    liff.login()
+    // liff.login()
   }
   useEffect(() => {
     // Get the value of the "page" parameter within liff.state
@@ -77,16 +77,12 @@ const Liff = ({ liffID }: ILiffProps) => {
               className="rounded-full mt-4"
             />
           </div>
-          {/* <div className="font-bold mb-2 text-coffee">QR สำหรับบัตรสะสมแต้ม</div>
-        <div className="bg-[#988686] h-[200px] w-[300px] rounded-sm">
-          <Image
-            src={"/qr.png"}
-            alt="qr"
-            height={80}
-            width={80}
-            className="rounded-full mt-4"
-          />
-        </div> */}
+          <a
+            href="https://lin.ee/qAGMKwx"
+            className="font-bold mb-2 text-coffee underline underline-offset-4"
+          >
+            ไปยังหน้าสะสมแต้ม
+          </a>
         </div>
       )}
     </div>
