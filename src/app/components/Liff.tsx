@@ -3,20 +3,23 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import liff from "@line/liff"
 import Image from "next/image"
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
+import { ILine } from "../interfaces/ILine"
+import { setProfile } from "../redux/features/lineSlice"
+import { setLogin } from "../redux/features/loginSlice"
 interface ILiffProps {
   liffID: string
 }
 const Liff = ({ liffID }: ILiffProps) => {
   const [liffObject, setLiffObject] = useState<any>(null)
-  const [profile, setProfile] = useState<any>(null)
   const [liffError, setLiffError] = useState<any>(null)
   const [pageValue, setPageValue] = useState<any>(null)
   const router = useRouter()
+  const userProfile = useAppSelector((state) => state.lineReducer)
+  const userLogin = useAppSelector((state) => state.loginSlice)
 
+  const dispatch = useAppDispatch()
   const handleLogin = () => {
-    // liff.login({
-    //   redirectUri: `https://feel-gafe-line-liff.vercel.app/${extractedValue}`,
-    // })
     liff.login()
   }
   useEffect(() => {
@@ -27,11 +30,12 @@ const Liff = ({ liffID }: ILiffProps) => {
       .then(() => {
         setLiffObject(liff)
         if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile: any) => {
+          dispatch(setLogin({ isLoggedIn: true, token: liff.getAccessToken() }))
+          liff.getProfile().then((profile: ILine) => {
+            dispatch(setProfile(profile))
             const destinationUrl = window?.location?.search
             const pattern = /\?page=(\w+)/
             const match = destinationUrl?.match(pattern)
-            setProfile(profile)
 
             if (match) {
               const extractedValue = match[1]
@@ -40,6 +44,7 @@ const Liff = ({ liffID }: ILiffProps) => {
             }
           })
         } else {
+          dispatch(setLogin({ isLoggedIn: false, token: "" }))
           handleLogin()
         }
         console.log("liff.init() done")
@@ -48,23 +53,23 @@ const Liff = ({ liffID }: ILiffProps) => {
         console.log(`LIFF error: ${e.message}`)
         setLiffError(e.message.toString())
       })
-  }, [liffID, liffObject, pageValue, router])
+  }, [dispatch, liffID, liffObject, pageValue, router])
 
   return (
     <div className="flex justify-center items-center flex-col">
-      {!liffObject?.isLoggedIn() && (
+      {!userLogin?.isLoggedIn && (
         <div className="font-bold text-2xl text-coffee hover:text-coffee-hover mt-[100px]">
           เรากำลังพาคุณไปยังหน้า Login...
         </div>
       )}
-      {liffObject?.isLoggedIn() && pageValue === "line" && (
+      {userLogin?.isLoggedIn && pageValue === "line" && (
         <div className="mt-[100px]">
           <div className="font-semibold text-coffee">
-            สวัสดีค่ะ คุณ {profile?.displayName || "N/A"}
+            สวัสดีค่ะ คุณ {userProfile?.displayName || "N/A"}
           </div>
           <div>
             <Image
-              src={profile?.pictureUrl}
+              src={userProfile?.pictureUrl!}
               alt="profile"
               height={100}
               width={100}
