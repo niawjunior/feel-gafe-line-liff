@@ -9,8 +9,8 @@ import { Providers } from "./redux/provider"
 const inter = Kanit({ subsets: ["latin"], weight: "400" })
 
 export const metadata: Metadata = {
-  title: "FEEL Gafé - ฟีล กาเฟ่ พระราม 2",
-  description: "FEEL Gafé - ฟีล กาเฟ่ พระราม 2",
+  title: "DevStart Cafe - กาแฟสำหรับ Developer",
+  description: "DevStart Cafe - กาแฟสำหรับ Developer",
 }
 
 export default function RootLayout({
