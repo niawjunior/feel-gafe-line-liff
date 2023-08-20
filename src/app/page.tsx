@@ -30,35 +30,13 @@ export default function Home() {
             `h-full lg:flex lg:flex-row flex-col justify-around  text-center bg-white/50 shadow-xl rounded-md px-4 lg:py-8 py-6 lg:mt-[20px] mt-[100px] `
           )}
         >
-          <div className="relative">
+          <div className="relative m-auto">
             <div className="lg:text-5xl text-4xl  text-coffee font-bold ">
-              FEEL <span className="text-neutral-800">Gafé</span>
+              DevStart <span className="text-neutral-800">Cafe</span>
             </div>
 
             <div className="lg:text-5xl text-4xl mt-4 text-coffee font-bold ">
-              ฟีล <span className="text-neutral-800">กาเฟ่</span>
-            </div>
-            <div className="">
-              <div className="text-xl underline underline-offset-4   mt-4 font-bold ">
-                พระราม 2
-              </div>
-            </div>
-            <div className="flex justify-center mt-4 w-[60px] h-[60px] mx-auto">
-              <Image
-                src={"/logo.jpeg"}
-                alt="logo"
-                height={"100"}
-                width={"100"}
-                className="rounded-full shadow-xl border-4 border-white"
-              />
-            </div>
-            <div className="flex justify-center mt-4 w-[100px] h-[100px] mx-auto">
-              <Image
-                src="/coffee-qr.png"
-                alt="qr"
-                height={200}
-                width={200}
-              ></Image>
+              กาแฟสำหรับ <span className="text-neutral-800">Developer</span>
             </div>
           </div>
           <div className=" lg:mt-0 mt-[20px] flex flex-col items-center justify-center">
